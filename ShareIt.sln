@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C53FE32D-59FD-4F5A-B675-8429D2E37FF5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9DEE117D-EE40-470D-BF1B-EF6E1358F236}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ShareIt", "src\ShareIt\ShareIt.xproj", "{9F71433C-7AFB-47EC-8070-E61AFD3EAC95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F71433C-7AFB-47EC-8070-E61AFD3EAC95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F71433C-7AFB-47EC-8070-E61AFD3EAC95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F71433C-7AFB-47EC-8070-E61AFD3EAC95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F71433C-7AFB-47EC-8070-E61AFD3EAC95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9F71433C-7AFB-47EC-8070-E61AFD3EAC95} = {C53FE32D-59FD-4F5A-B675-8429D2E37FF5}
+	EndGlobalSection
+EndGlobal

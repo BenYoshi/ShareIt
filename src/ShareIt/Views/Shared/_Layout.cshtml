@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="~/lib/tether/dist/css/tether.css"/>
+    <link rel="stylesheet" href="~/css/StyleSheet.css"/>
+</head>
+
+<body>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded sticky-top">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" 
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                 aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">ShareIt</a>
+        <div class="collapse navbar-collapse container-fluid" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="active">
+                    <a class="nav-link" asp-controller="Home" asp-action="Create">Post</a>
+                </li>
+                <li>
+                    <a class="nav-link " asp-controller="Home" asp-action="Profile">
+                        Profile
+                    </a>
+                </li>
+            </ul>
+            <div>
+                @await Component.InvokeAsync("LoginLogout")
+            </div>
+        </div>
+        
+        
+    </nav>
+    
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+
+    <footer>
+        <div class="container">
+            <p class="text-center">&copy; 2017 ShareIt</p>
+        </div>
+    </footer>
+    
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/tether/dist/js/tether.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

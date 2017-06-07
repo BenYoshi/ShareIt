@@ -1,0 +1,35 @@
+﻿@model Post
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<div class="row space">
+
+    <div class="col-md-6 offset-3 card">
+
+        <h1 class="card-header">Post</h1>
+
+        <div class="card-block">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary()
+                <div>
+                    @Html.LabelFor(m => m.Title)
+                    @Html.EditorFor(m => m.Title)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Type)
+                    @Html.DropDownListFor(m => m.Type, Html.GetEnumSelectList(typeof(PostType)));
+                </div>
+                <div>
+                    @Html.TextAreaFor(m => m.Content, new { @class="form-control height_350px", rows = "3"})
+                </div>
+                <div class="card-footer">
+                    <input class="btn btn-success" type="submit" value="Save!"/>
+                </div>
+            }
+        </div>
+    </div>
+</div>

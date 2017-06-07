@@ -1,0 +1,89 @@
+﻿@model HomePageViewModel
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<div class="row space">
+    <div class="col-md-8">
+        <h2 class="space">All the posts:</h2>
+
+        <table>
+            @foreach (var post in Model.Posts)
+            {
+                <div class="card space">
+                    <div class="card-block">
+                        <a asp-action="Details" asp-route-id="@post.Id">
+                            <h3 class="card-title">@post.Title</h3>
+                        </a>
+                        <p class="card-text">@post.Content.Substring(0, 125) ...</p>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="button" class="fa fa-arrow-circle-o-up btn btn-success vote-btn"
+                                        data-id="@post.Id" data-submit="UP"> @post.Upvotes</button>
+                                <button type="button" class="fa fa-arrow-circle-o-down btn btn-danger vote-btn"
+                                        data-id="@post.Id" data-submit="DOWN"> @post.Downvotes</button>
+                            </div>
+
+                            <div class="col-md-4">
+                                <p class="col-md-5 float-right">u/@post.Poster</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </table>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-block">
+                <h4>
+                    So much to do, so much to see!
+                </h4>
+                <ul>
+                    <li>
+                        <a class="btn btn-success" asp-action="Create">Post</a>
+                        something serious, happy, sad, or funny!
+                    </li>
+                    <li>
+                        Let people know what you think of their posts by commenting or tapping the
+                        <a class="fa fa-arrow-circle-o-up btn btn-sm btn-success" href="#"> 13</a> or
+                        <a class="fa fa-arrow-circle-o-down btn btn-sm btn-danger" href="#"> 7</a> buttons
+                    </li>
+                    <li>
+                        Click a post's
+                        <a href="#">Title</a>
+                        to see more
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(function() {
+            $('.vote-btn').on('click',
+                function() {
+                    var elm = $(this);
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("Vote")',
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify({
+                            id: elm.data('id'),
+                            submit: elm.data('submit')
+                        }),
+                        success: function(data) {
+                            //change number
+                            elm.text(" " + data.count);
+                        }
+                    });
+                });
+        });
+    </script>
+}

@@ -1,0 +1,24 @@
+﻿@model CommentEditViewModel
+
+@{
+    ViewBag.Title = $"Edit {Model.Post.Title}";
+}
+
+<div class="space">
+    <div class="card">
+        <h1 class="card-header">Commenting: @Model.Post.Title</h1>
+
+        <div class="card-block">
+            <form method="post" asp-antiforgery="true" class="comment">
+                <div>
+                    <label asp-for="Content"></label>
+                    <textarea asp-for="Content" style="width: 100%; height: 350px;"></textarea>
+                    <span asp-validation-for="Content"></span>
+                </div>
+                <div class="card-footer">
+                    <input class="btn btn-success" type="submit" value="Save!" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

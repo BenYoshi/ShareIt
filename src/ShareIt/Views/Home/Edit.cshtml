@@ -1,0 +1,33 @@
+﻿@model Post
+
+@{
+    ViewBag.Title = $"Edit {Model.Title}";
+}
+
+<div class="space">
+    <div class="card">
+        <h1 class="card-header">Editing: @Model.Title</h1>
+
+        <div class="card-block">
+            <form method="post" asp-antiforgery="true" class="edit">
+                <div>
+                    <label asp-for="Title"></label>
+                    <input asp-for="Title" />
+                    <span asp-validation-for="Title"></span>
+
+                    <label asp-for="Type"></label>
+                    <select asp-for="Type" asp-items="@Html.GetEnumSelectList(typeof(PostType))"></select>
+                    <span asp-validation-for="Type"></span>
+                </div>
+                <div>
+                    <label asp-for="Content"></label>
+                    <textarea asp-for="Content" style="width: 100%; height: 350px;"></textarea>
+                    <span asp-validation-for="Content"></span>
+                </div>
+                <div class="card-footer">
+                    <input class="btn btn-success" type="submit" value="Save!" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

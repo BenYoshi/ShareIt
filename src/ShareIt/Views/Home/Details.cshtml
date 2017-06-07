@@ -1,0 +1,68 @@
+﻿@model DetailsViewModel
+
+@{
+    ViewBag.Title = Model.Post.Title;
+}
+
+<div class="card space">
+    <h2 class="card-header">@Model.Post.Title</h2>
+    <div class="card-block">
+        <p>@Model.Post.Content</p>
+        
+        <h5>@Model.Post.Type</h5>
+
+        <button type="button" class="fa fa-arrow-circle-o-up btn btn-success vote-btn"
+                data-id="@Model.Post.Id" data-submit="UP">
+            @Model.Post.Upvotes
+        </button>
+        <button type="button" class="fa fa-arrow-circle-o-down btn btn-danger vote-btn"
+                data-id="@Model.Post.Id" data-submit="DOWN">
+            @Model.Post.Downvotes
+        </button>
+
+        <p class="col-md-6 float-right">u/@Model.Post.Poster</p>
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Post.Id">Edit</a>
+        @*        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>*@
+        <a class="btn btn-primary" asp-action="Index">Home</a>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-primary" asp-action="Comment" asp-route-id="@Model.Post.Id">Comment</a>
+    </div>
+</div>
+
+<h3 style="margin: 20px;">Comments</h3>
+@foreach (var comment in @Model.Comments)
+{
+    <div class="card space">
+        <div class="card-block">
+            <p>
+                @comment.Content
+            </p>
+        </div>
+        <div class="card-footer">Commented by u/@comment.Commenter.UserName</div>
+    </div>
+}
+
+@section Scripts{
+    <script>
+        $(function() {
+            $('.vote-btn').on('click',
+                function() {
+                    var elm = $(this);
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("Vote")',
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify({
+                            id: elm.data('id'),
+                            submit: elm.data('submit')
+                        }),
+                        success: function(data) {
+                            //change number
+                            elm.text(" " + data.count);
+                        }
+                    });
+                });
+        });
+    </script>
+}

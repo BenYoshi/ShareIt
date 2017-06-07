@@ -1,0 +1,34 @@
+﻿@model ProfileViewModel
+
+@{
+    ViewBag.Title = $"Edit {Model.UserName}";
+}
+
+<div class="col-md-4 offset-4">
+    <div class="text-center card super_space">
+        <h1 class="card-header">Editing Profile</h1>
+
+        <div class="card-block">
+            <form method="post" asp-antiforgery="true">
+                <div class="space">
+                    <label asp-for="UserName"></label>
+                    <input asp-for="UserName" />
+                    <span asp-validation-for="UserName"></span>
+                </div>
+                <div class="space">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" />
+                    <span asp-validation-for="Email"></span>
+                </div>
+                <div class="space">
+                    <label asp-for="Phone"></label>
+                    <input asp-for="Phone" />
+                    <span asp-validation-for="Phone"></span>
+                </div>
+                <div class="card-footer">
+                    <input class="btn btn-success" type="submit" value="Save!" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
